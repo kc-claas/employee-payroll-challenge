@@ -1,18 +1,59 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
+let employeeRoster = []
+
 // Collect employee data
 const collectEmployees = function() {
+  let x = 1
+  while (x>0) {
+let employeeData = {firstName:"", lastName:"", salary: ""}
   // TODO: Get user input to create and return an array of employee objects
+  employeeData.firstName = window.prompt("Employee first name")
+    // console.log(employeeData.firstName)
+  employeeData.lastName = window.prompt("Employee last name")
+    // console.log(employeeData.lastName)
+  employeeData.salary = parseFloat(window.prompt("Employee salary"))
+    // console.log(employeeData.salary)
+  if (Number.isNaN(employeeData.salary))
+    employeeData.salary = 0
+    // console.log(employeeData.salary)
+
+  employeeRoster.push(employeeData)
+    // console.log(employeeRoster)
+  
+  if (!window.confirm("Add another employee?")) {
+    x = 0}
+  }
+    return employeeRoster
+  
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
+  let totalsalary = 0
+      // console.log(employeesArray)
+  for (i = 0; i < employeesArray.length; i++) {
+    totalsalary = (totalsalary + employeesArray[i].salary)
+      // console.log(totalsalary)
+    }
+
+  let averageSalary = (totalsalary/(employeesArray.length))
+    averageSalaryWithTwoDecimals = ((Math.floor((averageSalary)*100))/100)
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalaryWithTwoDecimals}`)
+  
+  
+
+      
+  return
+    
   // TODO: Calculate and display the average salary
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
+  const winner = (Math.floor(Math.random()*employeesArray.length))
+    console.log(`Congratulations to ${employeesArray[winner].firstName} ${employeesArray[winner].lastName}, our random drawing winner!`)
   // TODO: Select and display a random employee
 }
 
