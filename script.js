@@ -39,7 +39,10 @@ const displayAverageSalary = function(employeesArray) {
     }
 
   let averageSalary = (totalsalary/(employeesArray.length))
-    averageSalaryWithTwoDecimals = ((Math.floor((averageSalary)*100))/100)
+    averageSalaryWithTwoDecimals = (averageSalary.toLocaleString("en-US",{
+      style:"currency",
+      currency:"USD"
+    }))
   console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalaryWithTwoDecimals}`)
   
   
