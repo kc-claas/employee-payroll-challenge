@@ -5,26 +5,22 @@ let employeeRoster = []
 
 // Collect employee data
 const collectEmployees = function() {
-  let x = 1
-  while (x>0) {
-let employeeData = {firstName:"", lastName:"", salary: ""}
+  employeeRoster = []
+  let x = 0
+  while (x>=0) {
   // TODO: Get user input to create and return an array of employee objects
-  employeeData.firstName = window.prompt("Employee first name")
-    // console.log(employeeData.firstName)
-  employeeData.lastName = window.prompt("Employee last name")
-    // console.log(employeeData.lastName)
-  employeeData.salary = parseFloat(window.prompt("Employee salary"))
-    // console.log(employeeData.salary)
-  if (Number.isNaN(employeeData.salary))
-    employeeData.salary = 0
-    // console.log(employeeData.salary)
+    employeeRoster[x] = {firstName: window.prompt("Employee first name"),
+    lastName: window.prompt("Employee last name"),
+    salary: parseFloat(window.prompt("Employee salary"))}
+  if (Number.isNaN(employeeRoster[x].salary))
+    {employeeRoster[x].salary = 0};
 
-  employeeRoster.push(employeeData)
     // console.log(employeeRoster)
   
-  if (!window.confirm("Add another employee?")) {
-    x = 0}
-  }
+  if (window.confirm("Add another employee?")) {
+    x++}
+    else {x = -1}    
+  };
     return employeeRoster
   
 }
@@ -39,13 +35,9 @@ const displayAverageSalary = function(employeesArray) {
     }
 
   let averageSalary = (totalsalary/(employeesArray.length))
-    averageSalaryWithTwoDecimals = averageSalary.toLocaleString("en-US",{
-      style:"currency",
-      currency:"USD"
-    })
-  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${averageSalaryWithTwoDecimals}`)
-   
-  return
+    averageSalaryWithTwoDecimals = averageSalary.toFixed(2)
+
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalaryWithTwoDecimals}`)
     
   // TODO: Calculate and display the average salary
 }
